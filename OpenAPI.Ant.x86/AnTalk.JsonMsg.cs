@@ -4,7 +4,7 @@ using ShareInvest.Entities.Assets;
 using ShareInvest.Observers;
 using ShareInvest.OpenAPI.Entity;
 
-using System.Diagnostics;
+using System.Net;
 
 namespace ShareInvest;
 
@@ -120,6 +120,18 @@ partial class AnTalk
             case Entities.Kiwoom.Opt50001 or null:
                 axAPI.CommRqData();
                 return;
+
+            case Entities.Kiwoom.Opw20015 w215:
+                opw20015Collection.Enqueue(w215);
+                return;
+
+            case SingleOpw20015 sw215 when Talk != null:
+
+                if (HttpStatusCode.OK == (await Talk.ExecutePostAsync(e.Convey.GetType().Name[6..], opw20015Collection)).StatusCode)
+                {
+                    opw20015Collection.Clear();
+                }
+                break;
         }
         _ = await Talk!.ExecutePostAsync(e.Convey);
     }

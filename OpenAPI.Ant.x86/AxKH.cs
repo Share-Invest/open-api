@@ -25,6 +25,16 @@ partial class AxKH : UserControl, IEventHandler<MsgEventArgs>
         InitializeComponent();
     }
 
+    internal string? Month
+    {
+        get; private set;
+    }
+
+    internal bool ConnectState
+    {
+        get => axAPI.GetConnectState() == 1;
+    }
+
     internal bool IsFutures(string code)
     {
         return Array.Exists(axAPI.GetFutureList().Split(';'), code.Equals);
@@ -92,11 +102,6 @@ partial class AxKH : UserControl, IEventHandler<MsgEventArgs>
             OnReceiveErrMessage(o.RQName, order);
         }));
         Delay.Instance.Milliseconds = 0xC7;
-    }
-
-    internal bool ConnectState
-    {
-        get => axAPI.GetConnectState() == 1;
     }
 
     void OnEventConnect(object sender, _DKHOpenAPIEvents_OnEventConnectEvent e)
@@ -328,6 +333,8 @@ partial class AxKH : UserControl, IEventHandler<MsgEventArgs>
         }
         _ = axAPI.SetRealReg("5002", $"{callOptionCodeStr.Remove(callOptionCodeStr.Length - 1, 1)}", KiwoomOption.FidList, "0");
         _ = axAPI.SetRealReg("5003", $"{putOptionCodeStr.Remove(putOptionCodeStr.Length - 1, 1)}", KiwoomOption.FidList, "0");
+
+        Month = month;
 
         CommRqData();
     }

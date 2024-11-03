@@ -40,6 +40,8 @@ partial class AnTalk
         {
             Socket.Send += (sender, args) =>
             {
+                TR? tr = null;
+
                 switch (args)
                 {
                     case OrderFOArgs kf when string.IsNullOrEmpty(kf.OrderFO.Strategics) is false:
@@ -47,22 +49,31 @@ partial class AnTalk
                         return;
 
                     case RenewBalanceArgs rb:
-                        axAPI.CommRqData(new Opw20007
+                        tr = new Opw20007
                         {
                             Value = [rb.AccNo, string.Empty, "00"],
                             PrevNext = 0
-                        });
-                        return;
+                        };
+                        break;
 
                     case AssetsEventArgs e:
                         CheckOneSAccount(e.AccNo);
                         return;
+
+                    case OptionOrderMarginArgs m when string.IsNullOrEmpty(axAPI.Month) is false:
+                        tr = new Opw20015
+                        {
+                            Value = [axAPI.Month, m.Classification],
+                            PrevNext = 0
+                        };
+                        break;
 
                     case OccursInStockEventArgs stock:
                         LookupDailyChart(stock.Code, -1);
                         LookupMinuteChart(stock.Code, 1);
                         return;
                 }
+                axAPI.CommRqData(tr);
             };
             Socket.Hub.Closed += OccursDependingOnConnection;
             Socket.Hub.ServerTimeout = TimeSpan.FromSeconds(0x40);
