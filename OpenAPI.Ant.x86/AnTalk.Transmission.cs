@@ -139,6 +139,14 @@ partial class AnTalk
                     e.Transmission.PrevNext = opt20006Collection.Count;
                 }
                 break;
+
+            case Opw20015 when Talk != null:
+
+                if (HttpStatusCode.OK == (await Talk.ExecutePostAsync(e.Transmission.TrCode, opw20015Collection)).StatusCode)
+                {
+                    opw20015Collection.Clear();
+                }
+                break;
         }
 
         if (e.Transmission.PrevNext == 2)

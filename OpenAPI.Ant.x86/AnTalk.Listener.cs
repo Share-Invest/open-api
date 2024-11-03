@@ -262,4 +262,5 @@ partial class AnTalk
     readonly ConcurrentQueue<Entities.Kiwoom.Opt50030> opt50030Collection = new();
     readonly ConcurrentQueue<Entities.Kiwoom.Opt50067> opt50067Collection = new();
     readonly ConcurrentQueue<Entities.Kiwoom.Opt50068> opt50068Collection = new();
+    readonly ConcurrentQueue<Entities.Kiwoom.Opw20015> opw20015Collection = new();
 }
