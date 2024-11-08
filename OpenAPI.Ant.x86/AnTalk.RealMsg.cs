@@ -43,8 +43,8 @@ partial class AnTalk
                             CompareToPreviousSign = data[data.Length == 53 ? 21 : 19],
                             TradingVolume = data[7]
                         };
-                        LiquidateInPrinciple(e.Key);
                     }
+                    LiquidateInPrinciple(e.Key);
                     break;
 
                 case KiwoomRealType.선물시세:

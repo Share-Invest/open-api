@@ -36,6 +36,7 @@ partial class AnTalk
                 {
                     bal.HoldingQuantity = Convert.ToInt32(opw207.Quantity);
                     bal.QuantityAvailableForOrder = Convert.ToInt32(opw207.LiquidationPossibleQuantity);
+                    bal.OrderStatus = (OrderStatus)Enum.ToObject(typeof(OrderStatus), Convert.ToInt32(opw207.SellingAndBuyingClassification));
                 }
                 else
                 {
@@ -43,7 +44,8 @@ partial class AnTalk
                     {
                         HoldingQuantity = Convert.ToInt32(opw207.Quantity),
                         QuantityAvailableForOrder = Convert.ToInt32(opw207.LiquidationPossibleQuantity),
-                        AccNo = opw207.AccNo
+                        AccNo = opw207.AccNo,
+                        OrderStatus = (OrderStatus)Enum.ToObject(typeof(OrderStatus), Convert.ToInt32(opw207.SellingAndBuyingClassification))
                     };
                 }
                 break;
