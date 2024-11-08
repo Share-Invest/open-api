@@ -211,5 +211,8 @@ partial class AnTalk
     readonly ConcurrentDictionary<string, OpenAPI.Account> account = new();
     readonly ConcurrentDictionary<string, OpenAPI.Balance> balance = new();
     readonly ConcurrentDictionary<string, OpenAPI.Conclusion> conclusion = new();
+
     readonly ConcurrentDictionary<string, PriorityQuote> priorityQuote = new();
+
+    readonly ConcurrentDictionary<string, SingleOpt50001> foQuote = new();
 }

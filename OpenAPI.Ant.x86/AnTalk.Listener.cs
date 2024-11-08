@@ -237,18 +237,6 @@ partial class AnTalk
         "0106"
     ];
 
-#if DEBUG
-    readonly string[] realTypes =
-    [
-        "주식호가잔량",
-        "주식체결",
-        "주식우선호가",
-        "종목프로그램매매",
-        "주식당일거래원",
-        "주식예상체결"
-    ];
-#endif
-
     readonly CoreWebView webView = new();
 
     readonly ConcurrentQueue<MultiOpt10081> opt10081Collection = new();
