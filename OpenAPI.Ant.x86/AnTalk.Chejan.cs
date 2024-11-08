@@ -91,6 +91,7 @@ partial class AnTalk
         }
         await saveChanges;
     }
+
     void CheckOneSAccount(string orderState, string accNo)
     {
         axAPI.CommRqData(orderState switch
