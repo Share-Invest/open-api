@@ -126,8 +126,8 @@ partial class AnTalk
         }
         else
         {
-            axAPI.CommRqData(new OPW00004 { Value = [accNo, string.Empty, "0", "00"], PrevNext = 0 });
-            axAPI.CommRqData(new Opw00005 { Value = [accNo, string.Empty, "00"], PrevNext = 0 });
+            axAPI.CommRqData(new OPW00004 { Value = [accNo, string.Empty, "0", "00", string.Empty], PrevNext = 0 });
+            axAPI.CommRqData(new Opw00005 { Value = [accNo, string.Empty, "00", string.Empty], PrevNext = 0 });
         }
     }
 
