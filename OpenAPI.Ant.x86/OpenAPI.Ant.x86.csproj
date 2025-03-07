@@ -18,7 +18,7 @@
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
 		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
-		<Version>8.2.1.48</Version>
+		<Version>8.2.1.49</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
