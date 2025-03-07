@@ -46,7 +46,7 @@ jobs:
       working-directory: ${{ env.working-directory }}
     
     - name: Upload dotnet test results
-      uses: actions/upload-artifact@v3      
+      uses: actions/upload-artifact@v4   
       with:
         name: dotnet-results-${{ matrix.targetplatform }}-${{ matrix.dotnet-version }}
         path: ./OpenAPI.Ant.x86-results-${{ matrix.targetplatform }}-${{ matrix.dotnet-version }}
