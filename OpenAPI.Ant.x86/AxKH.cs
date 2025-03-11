@@ -269,9 +269,11 @@ partial class AxKH : UserControl, IEventHandler<MsgEventArgs>
     /// </summary>
     void GetCodeListByMarket()
     {
-        List<string> codeListByMarket = new(axAPI.GetCodeListByMarket("0").Split(';').OrderBy(o => Guid.NewGuid()));
-
-        codeListByMarket.AddRange(axAPI.GetCodeListByMarket("10").Split(';').OrderBy(o => Guid.NewGuid()));
+        List<string> codeListByMarket =
+        [
+            .. axAPI.GetCodeListByMarket("0").Split(';').OrderBy(o => Guid.NewGuid()),
+            .. axAPI.GetCodeListByMarket("10").Split(';').OrderBy(o => Guid.NewGuid()),
+        ];
 
         foreach (var tr in TrConstructor.GetInventoryOnConditions(codeListByMarket))
         {
